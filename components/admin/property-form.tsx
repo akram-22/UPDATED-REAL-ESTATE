@@ -100,7 +100,6 @@ export function PropertyForm({ existing }: Props) {
   }
 
   async function handleSubmit() { 
-
     setSaving(true)
     await new Promise((r) => setTimeout(r, 400))
     if (isEdit && existing) {
