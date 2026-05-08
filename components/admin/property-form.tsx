@@ -99,7 +99,7 @@ export function PropertyForm({ existing }: Props) {
     set("badgeColor", preset.color)
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit() { 
     e.preventDefault()
     setSaving(true)
     await new Promise((r) => setTimeout(r, 400))
