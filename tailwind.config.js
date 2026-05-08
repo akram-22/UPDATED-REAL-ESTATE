@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        cream: '#faf9f6',
         gold: '#c9a84c',
         navy: '#0f1f3d',
         background: 'hsl(var(--background))',
