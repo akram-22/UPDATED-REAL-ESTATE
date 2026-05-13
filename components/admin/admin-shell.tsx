@@ -10,12 +10,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const { isAuthenticated } = useAdminAuth()
   const [ready, setReady] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
-    // Wait one tick so localStorage has time to load into state
-    const timer = setTimeout(() => {
-      setReady(true)
-    }, 100)
+    const timer = setTimeout(() => setReady(true), 150)
     return () => clearTimeout(timer)
   }, [])
 
@@ -25,11 +23,19 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     }
   }, [ready, isAuthenticated, router])
 
-  // Show spinner while checking auth
   if (!ready || !isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
-        <svg className="animate-spin text-gold" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg
+          className="animate-spin"
+          style={{ color: "var(--gold)" }}
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
           <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
           <path d="M12 2a10 10 0 0 1 10 10" />
         </svg>
@@ -39,6 +45,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex bg-background">
+
       {/* Desktop sidebar */}
       <div className="hidden md:flex flex-col w-60 flex-shrink-0 h-screen sticky top-0">
         <AdminSidebar />
@@ -60,6 +67,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
+
         {/* Mobile topbar */}
         <header className="md:hidden sticky top-0 z-30 flex items-center gap-3 px-4 h-14 bg-white border-b border-border shadow-sm">
           <button
@@ -76,6 +84,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         <main className="flex-1 p-5 md:p-8 max-w-6xl w-full mx-auto">
           {children}
         </main>
+
       </div>
     </div>
   )
