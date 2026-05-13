@@ -9,18 +9,24 @@ import { AdminSidebar } from "./admin-sidebar"
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const { isAuthenticated } = useAdminAuth()
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const [checked, setChecked] = useState(false)
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    setChecked(true)
-    if (!isAuthenticated) {
+    // Wait one tick so localStorage has time to load into state
+    const timer = setTimeout(() => {
+      setReady(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  useEffect(() => {
+    if (ready && !isAuthenticated) {
       router.replace("/admin/login")
     }
-  }, [isAuthenticated, router])
+  }, [ready, isAuthenticated, router])
 
-  // Don't flash the dashboard before redirect
-  if (!checked || !isAuthenticated) {
+  // Show spinner while checking auth
+  if (!ready || !isAuthenticated) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <svg className="animate-spin text-gold" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
