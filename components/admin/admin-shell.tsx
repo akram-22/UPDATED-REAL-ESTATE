@@ -45,13 +45,10 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex bg-background">
-
-      {/* Desktop sidebar */}
       <div className="hidden md:flex flex-col w-60 flex-shrink-0 h-screen sticky top-0">
         <AdminSidebar />
       </div>
 
-      {/* Mobile sidebar overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 z-40 md:hidden flex">
           <div
@@ -65,10 +62,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
-
-        {/* Mobile topbar */}
         <header className="md:hidden sticky top-0 z-30 flex items-center gap-3 px-4 h-14 bg-white border-b border-border shadow-sm">
           <button
             onClick={() => setMobileOpen(true)}
@@ -79,12 +73,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
           </button>
           <span className="font-serif text-base font-bold text-navy">Chabano CMS</span>
         </header>
-
-        {/* Page content */}
         <main className="flex-1 p-5 md:p-8 max-w-6xl w-full mx-auto">
           {children}
         </main>
-
       </div>
     </div>
   )
