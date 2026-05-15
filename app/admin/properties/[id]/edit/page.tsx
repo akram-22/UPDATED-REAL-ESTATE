@@ -1,13 +1,14 @@
 "use client"
 
-import { use } from "react"
+import { useParams } from "next/navigation"
 import { notFound } from "next/navigation"
 import { AdminShell } from "@/components/admin/admin-shell"
 import { PropertyForm } from "@/components/admin/property-form"
 import { usePropertiesStore } from "@/lib/store"
 
-export default function EditPropertyPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params)
+export default function EditPropertyPage() {
+  const params = useParams()
+  const id = params?.id as string
   const { properties } = usePropertiesStore()
   const property = properties.find((p) => p.id === id)
 
