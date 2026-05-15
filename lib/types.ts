@@ -1,5 +1,3 @@
-// ─── Core domain types ────────────────────────────────────────────────────────
-
 export type PropertyType = "F2" | "F3" | "F4" | "F5+"
 export type PropertyStatus = "available" | "sold" | "reserved"
 
