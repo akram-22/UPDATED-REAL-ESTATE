@@ -4,5 +4,9 @@ const nextConfig = {
   images: {
     domains: ["yymistvbtbtpaywkbtft.supabase.co"],
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 }
+
 module.exports = nextConfig
