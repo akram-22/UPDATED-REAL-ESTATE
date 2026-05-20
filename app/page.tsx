@@ -1,6 +1,4 @@
 export const dynamic = "force-dynamic"
-"use client"
-
 import { useEffect, useState } from "react"
 import { getSiteContent } from "@/lib/db"
 import { getProperties } from "@/lib/db"
