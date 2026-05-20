@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic"
+"use client"
 
 import { AdminShell } from "@/components/admin/admin-shell"
 import { PropertyForm } from "@/components/admin/property-form"
