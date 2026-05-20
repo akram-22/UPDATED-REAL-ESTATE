@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic"
+
 import { useEffect, useState } from "react"
 import { getSiteContent } from "@/lib/db"
 import { getProperties } from "@/lib/db"
