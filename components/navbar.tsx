@@ -32,23 +32,29 @@ export function NavBar({ content }: { content: SiteContent }) {
       
       <div className="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
         {/* CHABANO Logo */}
-        <a href="/" className="flex flex-col leading-none">
-          <span style={{
-            fontFamily: "Georgia, serif",
-            fontSize: "22px",
-            fontWeight: "700",
-            color: "#ffffff",
-            letterSpacing: "6px",
-            lineHeight: "1"
-          }}>CHABANO</span>
-          <span style={{
-            fontFamily: "Georgia, serif",
-            fontSize: "7px",
-            color: "var(--gold)",
-            letterSpacing: "4px",
-            marginTop: "3px"
-          }}>OWNING WAHRAN</span>
-        </a>
+<a href="/" className="flex flex-col leading-none" style={{ textDecoration: "none" }}>
+  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+    <div style={{ width: "2px", height: "36px", backgroundColor: "var(--gold)" }} />
+    <div>
+      <div style={{
+        fontFamily: "Georgia, serif",
+        fontSize: "20px",
+        fontWeight: "700",
+        color: "#ffffff",
+        letterSpacing: "6px",
+        lineHeight: "1"
+      }}>CHABANO</div>
+      <div style={{
+        fontFamily: "Georgia, serif",
+        fontSize: "7px",
+        color: "var(--gold)",
+        letterSpacing: "4px",
+        marginTop: "4px"
+      }}>OWNING WAHRAN</div>
+    </div>
+    <div style={{ width: "2px", height: "36px", backgroundColor: "var(--gold)" }} />
+  </div>
+</a>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
