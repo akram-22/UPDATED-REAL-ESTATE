@@ -7,14 +7,20 @@ export function ServicesSection({ content }: { content: SiteContent }) {
   const { services, contact } = content
   const wa = (msg: string) => `https://wa.me/${contact.whatsappNumber}?text=${encodeURIComponent(msg)}`
 
+  const service4 = services.service4 || {
+    tag: "Promotion", title: "Commercialisation de promotions ?",
+    desc: "Vous êtes promoteur immobilier ? Je commercialise vos projets résidentiels à Oran avec une stratégie marketing digitale complète.",
+    benefit1: "Stratégie marketing digitale", benefit2: "Présentation vidéo du projet", benefit3: "Base d'acheteurs qualifiés",
+    cta: "Commercialiser mon projet"
+  }
+
   const list = [
-    { data: services.service1, icon: Home, link: wa("Bonjour Chabane, je cherche à acheter un appartement à Oran."), accent: false },
-const list = [
     { data: services.service1, icon: Home, link: wa("Bonjour Chabane, je cherche à acheter un appartement à Oran."), accent: false },
     { data: services.service2, icon: DollarSign, link: wa("Bonjour Chabane, j'ai un bien à vendre à Oran."), accent: false },
     { data: services.service3, icon: TrendingUp, link: wa("Bonjour Chabane, je cherche des opportunités d'investissement à Oran."), accent: false },
-    ...(services.service4 ? [{ data: services.service4, icon: Building, link: wa("Bonjour Chabane, je suis promoteur immobilier et souhaite commercialiser mon projet à Oran."), accent: true }] : []),
+    { data: service4, icon: Building, link: wa("Bonjour Chabane, je suis promoteur immobilier et souhaite commercialiser mon projet à Oran."), accent: true },
   ]
+
   return (
     <section id="services" style={{ padding: "80px 0", backgroundColor: "#f9fafb" }}>
       <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "0 20px" }}>
@@ -38,7 +44,7 @@ const list = [
               borderRadius: "12px", padding: "28px",
               display: "flex", flexDirection: "column",
               transition: "all 0.3s",
-              borderTop: `3px solid var(--gold)`,
+              borderTop: "3px solid var(--gold)",
               boxShadow: accent ? "0 8px 32px rgba(10,22,40,0.2)" : "0 2px 8px rgba(0,0,0,0.04)"
             }}>
               <span style={{ display: "inline-block", fontSize: "10px", fontWeight: "700", letterSpacing: "3px", padding: "3px 12px", borderRadius: "100px", marginBottom: "20px", width: "fit-content", backgroundColor: accent ? "rgba(201,168,76,0.2)" : "rgba(201,168,76,0.1)", color: "var(--gold)", fontFamily: "Georgia, serif" }}>{data.tag.toUpperCase()}</span>
@@ -54,7 +60,7 @@ const list = [
                   </li>
                 ))}
               </ul>
-              <a href={link} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: "600", fontFamily: "Georgia, serif", letterSpacing: "1px", color: "var(--gold)", textDecoration: "none", transition: "gap 0.2s" }}>
+              <a href={link} target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", fontWeight: "600", fontFamily: "Georgia, serif", letterSpacing: "1px", color: "var(--gold)", textDecoration: "none" }}>
                 {data.cta} <ArrowRight size={14} />
               </a>
             </div>
