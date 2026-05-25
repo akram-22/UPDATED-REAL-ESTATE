@@ -9,11 +9,12 @@ export function ServicesSection({ content }: { content: SiteContent }) {
 
   const list = [
     { data: services.service1, icon: Home, link: wa("Bonjour Chabane, je cherche à acheter un appartement à Oran."), accent: false },
+const list = [
+    { data: services.service1, icon: Home, link: wa("Bonjour Chabane, je cherche à acheter un appartement à Oran."), accent: false },
     { data: services.service2, icon: DollarSign, link: wa("Bonjour Chabane, j'ai un bien à vendre à Oran."), accent: false },
     { data: services.service3, icon: TrendingUp, link: wa("Bonjour Chabane, je cherche des opportunités d'investissement à Oran."), accent: false },
-    { data: services.service4, icon: Building, link: wa("Bonjour Chabane, je suis promoteur immobilier et souhaite commercialiser mon projet à Oran."), accent: true },
+    ...(services.service4 ? [{ data: services.service4, icon: Building, link: wa("Bonjour Chabane, je suis promoteur immobilier et souhaite commercialiser mon projet à Oran."), accent: true }] : []),
   ]
-
   return (
     <section id="services" style={{ padding: "80px 0", backgroundColor: "#f9fafb" }}>
       <div style={{ maxWidth: "1152px", margin: "0 auto", padding: "0 20px" }}>
