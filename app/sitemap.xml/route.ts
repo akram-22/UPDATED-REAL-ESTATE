@@ -9,7 +9,14 @@ export async function GET() {
     getPromotions(),
   ])
 
-  const staticPages = [
+  type SitemapUrl = {
+    url: string
+    priority: string
+    changefreq: string
+    lastmod?: string
+  }
+
+  const staticPages: SitemapUrl[] = [
     { url: baseUrl, priority: "1.0", changefreq: "weekly" },
     { url: `${baseUrl}/#services`, priority: "0.8", changefreq: "monthly" },
     { url: `${baseUrl}/#about`, priority: "0.7", changefreq: "monthly" },
@@ -17,21 +24,21 @@ export async function GET() {
     { url: `${baseUrl}/blog`, priority: "0.8", changefreq: "weekly" },
   ]
 
-  const propertyPages = properties.map((p) => ({
+  const propertyPages: SitemapUrl[] = properties.map((p) => ({
     url: `${baseUrl}/properties/${p.id}`,
     priority: "0.9",
     changefreq: "weekly",
     lastmod: p.updated_at,
   }))
 
-  const promoPages = promotions.map((p) => ({
+  const promoPages: SitemapUrl[] = promotions.map((p) => ({
     url: `${baseUrl}/promotions/${p.id}`,
     priority: "0.9",
     changefreq: "weekly",
     lastmod: p.updated_at,
   }))
 
-  const articlePages = articles.map((a) => ({
+  const articlePages: SitemapUrl[] = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     priority: "0.7",
     changefreq: "monthly",
