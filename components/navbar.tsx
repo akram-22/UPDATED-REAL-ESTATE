@@ -32,24 +32,32 @@ export function NavBar({ content }: { content: SiteContent }) {
       
       <div className="max-w-6xl mx-auto px-5 md:px-8 h-16 flex items-center justify-between">
         {/* CHABANO Logo */}
-        <a href="/" className="flex flex-col leading-none">
-          <span style={{
-            fontFamily: "Georgia, serif",
-            fontSize: "22px",
-            fontWeight: "700",
-            color: "#ffffff",
-            letterSpacing: "6px",
-            lineHeight: "1"
-          }}>CHABANO</span>
-          <span style={{
-            fontFamily: "Georgia, serif",
-            fontSize: "7px",
-            color: "var(--gold)",
-            letterSpacing: "4px",
-            marginTop: "3px"
-          }}>OWNING WAHRAN</span>
-        </a>
-
+      <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
+  <div style={{ width: "1.5px", height: "40px", backgroundColor: "var(--gold)", flexShrink: 0 }} />
+  <div style={{ textAlign: "center" }}>
+    <div style={{
+      fontFamily: "Georgia, serif",
+      fontSize: "20px",
+      fontWeight: "700",
+      color: "#ffffff",
+      letterSpacing: "7px",
+      lineHeight: "1"
+    }}>CHABANO</div>
+    <div style={{
+      height: "1px",
+      backgroundColor: "var(--gold)",
+      margin: "4px 0",
+      opacity: 0.7
+    }} />
+    <div style={{
+      fontFamily: "Georgia, serif",
+      fontSize: "7px",
+      color: "var(--gold)",
+      letterSpacing: "4px"
+    }}>OWNING WAHRAN</div>
+  </div>
+  <div style={{ width: "1.5px", height: "40px", backgroundColor: "var(--gold)", flexShrink: 0 }} />
+</a>
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
           {links.map((l) => (
