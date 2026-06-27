@@ -29,7 +29,9 @@ export function NavBar({ content }: { content: SiteContent }) {
     <header
       style={{
         position: "fixed",
-        top: 0, left: 0, right: 0,
+        top: 0,
+        left: 0,
+        right: 0,
         zIndex: 50,
         backgroundColor: "#ffffff",
         borderBottom: "1px solid #e5e7eb",
@@ -37,46 +39,56 @@ export function NavBar({ content }: { content: SiteContent }) {
         transition: "box-shadow 0.3s",
       }}
     >
-      <div style={{
-        maxWidth: "1280px",
-        margin: "0 auto",
-        padding: "0 24px",
-        height: "68px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: "24px",
-      }}>
-
+      <div
+        style={{
+          maxWidth: "1280px",
+          margin: "0 auto",
+          padding: "0 24px",
+          height: "68px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: "24px",
+        }}
+      >
         {/* Logo */}
         <a href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-          <div style={{
-            fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "22px",
-            fontWeight: "700",
-            color: "#0a1628",
-            letterSpacing: "6px",
-            lineHeight: "1",
-          }}>
-            CHABANO<span style={{ color: "var(--gold)" }}>.</span>
+          <div
+            style={{
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontSize: "22px",
+              fontWeight: "700",
+              color: "#0a1628",
+              letterSpacing: "6px",
+              lineHeight: "1",
+            }}
+          >
+            CHABANO<span style={{ color: "#c9a84c" }}>.</span>
           </div>
-          <div style={{
-            fontFamily: "Georgia, 'Times New Roman', serif",
-            fontSize: "7px",
-            color: "#9ca3af",
-            letterSpacing: "4px",
-            marginTop: "3px",
-          }}>OWNING WAHRAN</div>
+          <div
+            style={{
+              fontFamily: "Georgia, 'Times New Roman', serif",
+              fontSize: "7px",
+              color: "#9ca3af",
+              letterSpacing: "4px",
+              marginTop: "3px",
+            }}
+          >
+            OWNING WAHRAN
+          </div>
         </a>
 
         {/* Desktop nav */}
-        <nav style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "28px",
-          flex: 1,
-          justifyContent: "center",
-        }} className="hidden md:flex">
+        <nav
+          className="hidden md:flex"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "28px",
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
           {links.map((l) => (
             
               key={l.href}
@@ -85,12 +97,11 @@ export function NavBar({ content }: { content: SiteContent }) {
                 color: "#111827",
                 fontSize: "13px",
                 fontWeight: "600",
-                letterSpacing: "0.3px",
                 textDecoration: "none",
-                transition: "color 0.15s",
                 whiteSpace: "nowrap",
+                transition: "color 0.15s",
               }}
-              onMouseOver={(e) => (e.currentTarget.style.color = "var(--gold)")}
+              onMouseOver={(e) => (e.currentTarget.style.color = "#c9a84c")}
               onMouseOut={(e) => (e.currentTarget.style.color = "#111827")}
             >
               {l.label}
@@ -99,11 +110,23 @@ export function NavBar({ content }: { content: SiteContent }) {
         </nav>
 
         {/* Right side */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            flexShrink: 0,
+          }}
+        >
           
             href={`tel:${contact.whatsappNumber}`}
-            style={{ color: "#6b7280", fontSize: "12px", fontWeight: "500", textDecoration: "none" }}
             className="hidden md:block"
+            style={{
+              color: "#6b7280",
+              fontSize: "12px",
+              fontWeight: "500",
+              textDecoration: "none",
+            }}
           >
             {contact.whatsappNumber}
           </a>
@@ -123,13 +146,14 @@ export function NavBar({ content }: { content: SiteContent }) {
               whiteSpace: "nowrap",
               transition: "background-color 0.2s",
             }}
-            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "var(--gold)")}
+            onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#c9a84c")}
             onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#0a1628")}
           >
             Nous contacter
           </a>
 
           <button
+            className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{
               background: "none",
@@ -144,13 +168,20 @@ export function NavBar({ content }: { content: SiteContent }) {
               fontSize: "13px",
               fontWeight: "600",
             }}
-            className="md:hidden"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              {mobileOpen
-                ? <path d="M18 6L6 18M6 6l12 12" />
-                : <path d="M3 12h18M3 6h18M3 18h18" />
-              }
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            >
+              {mobileOpen ? (
+                <path d="M18 6L6 18M6 6l12 12" />
+              ) : (
+                <path d="M3 12h18M3 6h18M3 18h18" />
+              )}
             </svg>
             Menu
           </button>
@@ -159,11 +190,13 @@ export function NavBar({ content }: { content: SiteContent }) {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div style={{
-          backgroundColor: "#ffffff",
-          borderTop: "1px solid #f3f4f6",
-          padding: "8px 24px 20px",
-        }}>
+        <div
+          style={{
+            backgroundColor: "#ffffff",
+            borderTop: "1px solid #f3f4f6",
+            padding: "8px 24px 20px",
+          }}
+        >
           {links.map((l) => (
             
               key={l.href}
