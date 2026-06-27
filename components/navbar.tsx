@@ -31,10 +31,10 @@ export function NavBar({ content }: { content: SiteContent }) {
     left: 0,
     right: 0,
     zIndex: 50,
-    backgroundColor: "#ffffff",
-    borderBottom: "1px solid #e5e7eb",
+    backgroundColor: scrolled ? "#ffffff" : "transparent",
+    borderBottom: scrolled ? "1px solid #e5e7eb" : "none",
     boxShadow: scrolled ? "0 2px 16px rgba(0,0,0,0.07)" : "none",
-    transition: "box-shadow 0.3s",
+    transition: "background-color 0.3s, box-shadow 0.3s, border-bottom 0.3s",
   }
 
   const innerStyle: React.CSSProperties = {
@@ -52,27 +52,31 @@ export function NavBar({ content }: { content: SiteContent }) {
     fontFamily: "Georgia, 'Times New Roman', serif",
     fontSize: "22px",
     fontWeight: "700",
-    color: "#0a1628",
+    color: scrolled ? "#0a1628" : "#ffffff",
     letterSpacing: "6px",
     lineHeight: "1",
+    transition: "color 0.3s",
   }
 
   const logoSubStyle: React.CSSProperties = {
     fontFamily: "Georgia, 'Times New Roman', serif",
     fontSize: "7px",
-    color: "#9ca3af",
+    color: scrolled ? "#9ca3af" : "rgba(255,255,255,0.6)",
     letterSpacing: "4px",
     marginTop: "3px",
+    transition: "color 0.3s",
   }
 
   const navLinkStyle: React.CSSProperties = {
-    color: "#111827",
+    color: scrolled ? "#111827" : "rgba(255,255,255,0.85)",
     fontSize: "13px",
     fontWeight: "600",
     textDecoration: "none",
     whiteSpace: "nowrap",
     transition: "color 0.15s",
   }
+
+  const phoneColor = scrolled ? "#6b7280" : "rgba(255,255,255,0.7)"
 
   const ctaStyle: React.CSSProperties = {
     backgroundColor: "#0a1628",
@@ -104,7 +108,7 @@ export function NavBar({ content }: { content: SiteContent }) {
               href={l.href}
               style={navLinkStyle}
               onMouseOver={(e) => { e.currentTarget.style.color = "#c9a84c" }}
-              onMouseOut={(e) => { e.currentTarget.style.color = "#111827" }}
+              onMouseOut={(e) => { e.currentTarget.style.color = scrolled ? "#111827" : "rgba(255,255,255,0.85)" }}
             >
               {l.label}
             </a>
@@ -112,7 +116,7 @@ export function NavBar({ content }: { content: SiteContent }) {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
-          <a href={"tel:" + contact.whatsappNumber} className="hidden md:block" style={{ color: "#6b7280", fontSize: "12px", fontWeight: "500", textDecoration: "none" }}>
+          <a href={"tel:" + contact.whatsappNumber} className="hidden md:block" style={{ color: phoneColor, fontSize: "12px", fontWeight: "500", textDecoration: "none", transition: "color 0.3s" }}>
             {contact.whatsappNumber}
           </a>
 
@@ -130,7 +134,7 @@ export function NavBar({ content }: { content: SiteContent }) {
           <button
             className="md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
-            style={{ background: "none", border: "1px solid #e5e7eb", borderRadius: "6px", cursor: "pointer", padding: "6px 10px", display: "flex", alignItems: "center", gap: "6px", color: "#111827", fontSize: "13px", fontWeight: "600" }}
+            style={{ background: "none", border: scrolled ? "1px solid #e5e7eb" : "1px solid rgba(255,255,255,0.4)", borderRadius: "6px", cursor: "pointer", padding: "6px 10px", display: "flex", alignItems: "center", gap: "6px", color: scrolled ? "#111827" : "#ffffff", fontSize: "13px", fontWeight: "600" }}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               {mobileOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
